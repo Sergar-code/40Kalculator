@@ -203,7 +203,7 @@ Partial Class frmMain
         ' 
         Label7.AutoSize = True
         Label7.ForeColor = SystemColors.GrayText
-        Label7.Location = New Point(176, 9)
+        Label7.Location = New Point(152, 9)
         Label7.Margin = New Padding(2, 0, 2, 0)
         Label7.Name = "Label7"
         Label7.Size = New Size(420, 30)
@@ -328,7 +328,7 @@ Partial Class frmMain
         dgvDistributionSpreadsheet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = SystemColors.Window
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
@@ -350,7 +350,7 @@ Partial Class frmMain
         ' Label16
         ' 
         Label16.AutoSize = True
-        Label16.Location = New Point(595, 24)
+        Label16.Location = New Point(600, 22)
         Label16.Margin = New Padding(2, 0, 2, 0)
         Label16.Name = "Label16"
         Label16.Size = New Size(86, 15)
