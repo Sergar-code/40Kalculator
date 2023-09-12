@@ -81,6 +81,7 @@ Partial Class frmMain
         cmbTargetWounds = New ComboBox()
         cmbDiceType = New ComboBox()
         Label9 = New Label()
+        chkRolloverDevWounds = New CheckBox()
         CType(dgvDistributionSpreadsheet, ComponentModel.ISupportInitialize).BeginInit()
         CType(picDistributionHistogram, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -328,7 +329,7 @@ Partial Class frmMain
         dgvDistributionSpreadsheet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = SystemColors.Window
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
@@ -662,7 +663,7 @@ Partial Class frmMain
         cmbDiceType.Location = New Point(89, 9)
         cmbDiceType.Name = "cmbDiceType"
         cmbDiceType.Size = New Size(58, 23)
-        cmbDiceType.TabIndex = 65
+        cmbDiceType.TabIndex = 66
         ' 
         ' Label9
         ' 
@@ -673,11 +674,22 @@ Partial Class frmMain
         Label9.TabIndex = 66
         Label9.Text = "Dice Type"
         ' 
+        ' chkRolloverDevWounds
+        ' 
+        chkRolloverDevWounds.AutoSize = True
+        chkRolloverDevWounds.Location = New Point(352, 170)
+        chkRolloverDevWounds.Name = "chkRolloverDevWounds"
+        chkRolloverDevWounds.Size = New Size(186, 19)
+        chkRolloverDevWounds.TabIndex = 65
+        chkRolloverDevWounds.Text = "Rollover Devastating Wounds?"
+        chkRolloverDevWounds.UseVisualStyleBackColor = True
+        ' 
         ' frmMain
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(955, 533)
+        Controls.Add(chkRolloverDevWounds)
         Controls.Add(Label9)
         Controls.Add(cmbDiceType)
         Controls.Add(cmbTargetWounds)
@@ -809,4 +821,5 @@ Partial Class frmMain
     Friend WithEvents cmbTargetWounds As ComboBox
     Friend WithEvents cmbDiceType As ComboBox
     Friend WithEvents Label9 As Label
+    Friend WithEvents chkRolloverDevWounds As CheckBox
 End Class

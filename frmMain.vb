@@ -777,9 +777,14 @@ Public Class frmMain
 
         ReDim TempDist(CurrentDist.Length - 1)
 
-        'Mortal Wound PDF has to be adjusted to reflect unsaved wounds
-        If Decimal.Parse(txtModifiedAPChance.Text) > 0 And Decimal.Parse(txtMWWoundChance.Text) = 0 Then
+        'Mortal Wound PDF has to be adjusted to reflect unsaved wounds.
+        'This checks if using modified AP, or if using non-rollover Dev Wounds. 
+        If (Decimal.Parse(txtModifiedAPChance.Text) > 0 And Decimal.Parse(txtMWWoundChance.Text) = 0) Or (Decimal.Parse(txtModifiedAPChance.Text) = 0 And Decimal.Parse(txtMWWoundChance.Text) > 0 And chkRolloverDevWounds.Checked = False) Then
             'For a given number of initial normal wounds
+
+            'Set modified save chance to always fail if using non-rollover Dev Wounds
+            If Decimal.Parse(txtModifiedAPChance.Text) = 0 And chkRolloverDevWounds.Checked = False Then ModifiedSaveChance = 1
+
             For WoundNum = 0 To CurrentDist.Length - 1
                 'For a given number of wounds with modified AP
                 For ModifiedWoundNum = 0 To MaxModified
@@ -798,6 +803,7 @@ Public Class frmMain
                 Next
             Next
         Else
+
             Dim TempMWPDF(MaxModified, CurrentDist.Length - 1) As Double
             Dim SaveFactor(CurrentDist.Length - 1) As Double
             For WoundNum = 0 To CurrentDist.Length - 1
@@ -911,8 +917,8 @@ Public Class frmMain
             Next
 
 
-            'Apply mortal wounds if necessary
-            If Double.Parse(txtMWWoundChance.Text) > 0 Then
+            'Apply mortal wounds if necessary. Skip this if not using rollover Dev Wounds
+            If Double.Parse(txtMWWoundChance.Text) > 0 And chkRolloverDevWounds.Checked = True Then
 
                 'Condense all possible numbers of mortal wounds into a single PDF array Pr(MW | W)
                 Dim MWPDFArray(MaxModified * MaxDamage, CurrentDist.Length - 1) As Double
@@ -978,8 +984,8 @@ Public Class frmMain
             Next
         Next
 
-        'Add on Mortal Wounds from Devastating Wounds
-        If Double.Parse(txtMWWoundChance.Text) > 0 Then
+        'Add on Mortal Wounds from Devastating Wounds. Skip this if not using rollover Dev Wounds
+        If Double.Parse(txtMWWoundChance.Text) > 0 And chkRolloverDevWounds.Checked = True Then
             ReDim DamagePDF((MaxWounds + MaxModified) * MaxDamage)
             'For each unsaved wound
             For WoundNum = 0 To CurrentDist.Length - 1
